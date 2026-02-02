@@ -1,0 +1,155 @@
+{
+  "navigation": [
+    { "label": "Home", "href": "#home" },
+    { "label": "About", "href": "#about" },
+    { "label": "Services", "href": "#services" },
+    { "label": "Process", "href": "#process" },
+    { "label": "Clients", "href": "#clients" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "hero": {
+    "headline": "Transform Your Business with Expert Marketing & Software Solutions",
+    "subtitle": "We deliver innovative digital strategies and cutting-edge software development services that drive growth and maximize your business potential.",
+    "ctaText": "Get Started Today",
+    "ctaHref": "#contact"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Sprint Marketing & Software Solutions is a leading provider of comprehensive digital marketing and software development services. With years of expertise in the industry, we help businesses of all sizes achieve their goals through innovative strategies, cutting-edge technology, and data-driven solutions. Our team of experienced professionals is dedicated to delivering exceptional results that drive growth and maximize ROI for our clients."
+  },
+  "services": [
+    {
+      "id": "1",
+      "icon": "📊",
+      "title": "Digital Marketing",
+      "description": "Comprehensive digital marketing strategies including SEO, SEM, social media marketing, and content creation to boost your online presence."
+    },
+    {
+      "id": "2",
+      "icon": "💻",
+      "title": "Software Development",
+      "description": "Custom software solutions, web applications, and mobile apps built with modern technologies to meet your specific business needs."
+    },
+    {
+      "id": "3",
+      "icon": "🎨",
+      "title": "Brand Design",
+      "description": "Creative branding and design services that help establish a strong visual identity and memorable brand presence in the market."
+    },
+    {
+      "id": "4",
+      "icon": "📈",
+      "title": "Analytics & Insights",
+      "description": "Data-driven analytics and business intelligence solutions to track performance, identify opportunities, and make informed decisions."
+    },
+    {
+      "id": "5",
+      "icon": "🔧",
+      "title": "Technical Consulting",
+      "description": "Expert technical consulting services to help you navigate complex technology decisions and optimize your digital infrastructure."
+    },
+    {
+      "id": "6",
+      "icon": "🚀",
+      "title": "Growth Strategy",
+      "description": "Strategic planning and execution services designed to accelerate business growth and expand your market reach effectively."
+    }
+  ],
+  "whyChooseUs": [
+    {
+      "id": "1",
+      "icon": "✓",
+      "title": "Proven Expertise",
+      "description": "Years of experience delivering successful projects across various industries"
+    },
+    {
+      "id": "2",
+      "icon": "⚡",
+      "title": "Fast Delivery",
+      "description": "Efficient processes and agile methodologies ensure timely project completion"
+    },
+    {
+      "id": "3",
+      "icon": "🎯",
+      "title": "Results-Driven",
+      "description": "Focus on measurable outcomes and ROI for all our clients"
+    },
+    {
+      "id": "4",
+      "icon": "🤝",
+      "title": "Client-Focused",
+      "description": "Dedicated support and personalized solutions tailored to your needs"
+    },
+    {
+      "id": "5",
+      "icon": "💡",
+      "title": "Innovation",
+      "description": "Cutting-edge technologies and creative approaches to solve complex challenges"
+    },
+    {
+      "id": "6",
+      "icon": "🔒",
+      "title": "Reliable Partnership",
+      "description": "Long-term relationships built on trust, transparency, and consistent delivery"
+    }
+  ],
+  "process": [
+    {
+      "id": "1",
+      "number": 1,
+      "title": "Discovery & Planning",
+      "description": "We begin by understanding your business goals, target audience, and specific requirements through comprehensive consultations and analysis."
+    },
+    {
+      "id": "2",
+      "number": 2,
+      "title": "Strategy & Design",
+      "description": "Our team develops customized strategies and designs solutions that align with your objectives and industry best practices."
+    },
+    {
+      "id": "3",
+      "number": 3,
+      "title": "Development & Execution",
+      "description": "We implement the planned solutions using agile methodologies, ensuring quality and efficiency throughout the development process."
+    },
+    {
+      "id": "4",
+      "number": 4,
+      "title": "Optimization & Support",
+      "description": "Continuous monitoring, optimization, and ongoing support to ensure your solutions perform at their best and evolve with your needs."
+    }
+  ],
+  "clients": [
+    { "id": "1", "name": "Client One" },
+    { "id": "2", "name": "Client Two" },
+    { "id": "3", "name": "Client Three" },
+    { "id": "4", "name": "Client Four" },
+    { "id": "5", "name": "Client Five" },
+    { "id": "6", "name": "Client Six" }
+  ],
+  "contactCTA": {
+    "title": "Ready to Transform Your Business?",
+    "description": "Let's discuss how we can help you achieve your goals. Get in touch with us today for a free consultation.",
+    "ctaText": "Contact Us Now",
+    "ctaHref": "#contact"
+  },
+  "footer": {
+    "companyName": "Sprint Marketing & Software Solutions",
+    "description": "Delivering innovative marketing and software solutions to help businesses thrive in the digital age.",
+    "navigation": [
+      { "label": "Home", "href": "#home" },
+      { "label": "About", "href": "#about" },
+      { "label": "Services", "href": "#services" },
+      { "label": "Process", "href": "#process" },
+      { "label": "Clients", "href": "#clients" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "socialLinks": [
+      { "id": "1", "name": "LinkedIn", "href": "#", "icon": "in" },
+      { "id": "2", "name": "Twitter", "href": "#", "icon": "tw" },
+      { "id": "3", "name": "Facebook", "href": "#", "icon": "fb" },
+      { "id": "4", "name": "Instagram", "href": "#", "icon": "ig" }
+    ],
+    "copyright": "© 2024 Sprint Marketing & Software Solutions. All rights reserved."
+  }
+}
