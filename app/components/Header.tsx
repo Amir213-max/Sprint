@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { useApp } from "../contexts/AppContext";
 import { useTranslation } from "../hooks/useTranslation";
@@ -14,6 +14,8 @@ export default function Header({ companyName }: HeaderProps) {
   const { theme, toggleTheme, setLanguage } = useApp();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +25,39 @@ export default function Header({ companyName }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMobileMenuOpen &&
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node) &&
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [language]);
+
   const navigation = useMemo(
     () => [
       { label: t("navigation.home"), href: "/" },
@@ -31,7 +66,6 @@ export default function Header({ companyName }: HeaderProps) {
       { label: t("navigation.whyUs"), href: "/why-us" },
       { label: t("navigation.process"), href: "/#process" },
       { label: t("navigation.clients"), href: "/#clients" },
-      { label: t("navigation.contact"), href: "/#contact" },
     ],
     [t]
   );
@@ -50,19 +84,41 @@ export default function Header({ companyName }: HeaderProps) {
           <div className="flex-shrink-0 animate-fade-in">
             <Link
               href="/"
-              className="text-xl lg:text-2xl font-heading font-bold transition-colors"
-              style={{ 
-                color: 'var(--primary)'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-dark)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--primary)'}
+              className="flex items-center space-x-2 rtl:space-x-reverse"
             >
-              {companyName}
+              {/* Mobile & Medium: Colored Square */}
+              <div 
+                className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center font-bold text-white transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                style={{ 
+                  backgroundColor: 'var(--primary)',
+                  boxShadow: 'var(--shadow-md)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--primary-dark)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'var(--primary)';
+                }}
+              >
+                <span className="text-lg">S</span>
+              </div>
+              
+              {/* Desktop (Large): Text Logo */}
+              <span
+                className="hidden lg:block text-xl lg:text-2xl font-heading font-bold transition-colors"
+                style={{ 
+                  color: 'var(--primary)'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-dark)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--primary)'}
+              >
+                {companyName}
+              </span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8 rtl:space-x-reverse">
+          <div className="hidden md:flex md:items-center md:space-x-8 rtl:space-x-reverse md:mr-6 lg:mr-8">
             {navigation.map((item, index) => {
               const isHashLink = item.href.startsWith("#");
               const Component = isHashLink ? "a" : Link;
@@ -134,7 +190,7 @@ export default function Header({ companyName }: HeaderProps) {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              className="p-2 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 mx-[7px]"
               style={{ 
                 backgroundColor: 'var(--bg-tertiary)',
                 color: 'var(--text-secondary)'
@@ -172,15 +228,15 @@ export default function Header({ companyName }: HeaderProps) {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-2 rtl:space-x-reverse">
+          {/* Mobile Menu Button & Controls */}
+          <div className="md:hidden flex items-center gap-3 rtl:gap-reverse">
             {/* Mobile Language Switcher */}
-            <div className="flex items-center space-x-1 rtl:space-x-reverse">
+            <div className="flex items-center space-x-1 rtl:space-x-reverse rounded-lg p-1" style={{ backgroundColor: 'var(--bg-tertiary)' }}>
               <button
                 onClick={() => setLanguage("en")}
-                className="px-2 py-1 rounded text-xs"
+                className="px-2.5 py-1 rounded text-xs font-medium transition-all"
                 style={{
-                  backgroundColor: language === "en" ? 'var(--primary)' : 'var(--bg-tertiary)',
+                  backgroundColor: language === "en" ? 'var(--primary)' : 'transparent',
                   color: language === "en" ? 'var(--text-inverse)' : 'var(--text-tertiary)'
                 }}
               >
@@ -188,9 +244,9 @@ export default function Header({ companyName }: HeaderProps) {
               </button>
               <button
                 onClick={() => setLanguage("ar")}
-                className="px-2 py-1 rounded text-xs"
+                className="px-2.5 py-1 rounded text-xs font-medium transition-all"
                 style={{
-                  backgroundColor: language === "ar" ? 'var(--primary)' : 'var(--bg-tertiary)',
+                  backgroundColor: language === "ar" ? 'var(--primary)' : 'transparent',
                   color: language === "ar" ? 'var(--text-inverse)' : 'var(--text-tertiary)'
                 }}
               >
@@ -201,8 +257,13 @@ export default function Header({ companyName }: HeaderProps) {
             {/* Mobile Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded"
-              style={{ color: 'var(--text-secondary)' }}
+              className="p-2 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              style={{ 
+                backgroundColor: 'var(--bg-tertiary)',
+                color: 'var(--text-secondary)' 
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--bg-tertiary)'}
               aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
               aria-pressed={theme === "dark"}
             >
@@ -217,59 +278,111 @@ export default function Header({ companyName }: HeaderProps) {
               )}
             </button>
 
+            {/* Spacer for gap between theme toggle and menu button */}
+            <div className="w-2" />
+
+            {/* Hamburger Menu Button */}
             <button
-              className="p-2 transition-colors"
-              style={{ color: 'var(--text-secondary)' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
+              ref={menuButtonRef}
+              className="relative p-2 rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              style={{ 
+                backgroundColor: isMobileMenuOpen ? 'var(--hover-bg)' : 'var(--bg-tertiary)',
+                color: 'var(--text-secondary)' 
+              }}
+              onMouseEnter={(e) => {
+                if (!isMobileMenuOpen) {
+                  e.currentTarget.style.backgroundColor = 'var(--hover-bg)';
+                  e.currentTarget.style.color = 'var(--primary)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isMobileMenuOpen) {
+                  e.currentTarget.style.backgroundColor = 'var(--bg-tertiary)';
+                  e.currentTarget.style.color = 'var(--text-secondary)';
+                }
+              }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMobileMenuOpen ? (
-                  <path d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              <div className="w-6 h-6 relative">
+                <span
+                  className={`absolute top-0 left-0 w-full h-0.5 bg-current transition-all duration-300 ${
+                    isMobileMenuOpen ? 'rotate-45 top-2.5' : ''
+                  }`}
+                  style={{ transformOrigin: 'center' }}
+                />
+                <span
+                  className={`absolute top-2.5 left-0 w-full h-0.5 bg-current transition-all duration-300 ${
+                    isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
+                  }`}
+                />
+                <span
+                  className={`absolute top-5 left-0 w-full h-0.5 bg-current transition-all duration-300 ${
+                    isMobileMenuOpen ? '-rotate-45 top-2.5' : ''
+                  }`}
+                  style={{ transformOrigin: 'center' }}
+                />
+              </div>
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Overlay */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t animate-fade-in" style={{ borderColor: 'var(--border-primary)' }}>
-            {navigation.map((item) => {
-              const isHashLink = item.href.startsWith("#");
-              const Component = isHashLink ? "a" : Link;
-              const props = isHashLink
-                ? { href: item.href }
-                : { href: item.href as any };
-              
-              return (
-                <Component
-                  key={item.href}
-                  {...props}
-                  className="block py-2 text-base font-medium transition-colors"
-                  style={{ color: 'var(--text-secondary)' }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </Component>
-              );
-            })}
-          </div>
+          <div
+            className="fixed inset-0 top-16 lg:top-20 bg-[var(--bg-overlay)] z-40 md:hidden transition-opacity duration-300"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
         )}
+
+        {/* Mobile Navigation Menu */}
+        <div
+          ref={mobileMenuRef}
+          className={`md:hidden fixed top-16 lg:top-20 left-0 right-0 z-40 bg-[var(--bg-primary)] border-t transition-all duration-300 ease-in-out overflow-hidden ${
+            isMobileMenuOpen
+              ? 'max-h-screen opacity-100 shadow-lg'
+              : 'max-h-0 opacity-0'
+          }`}
+          style={{ 
+            borderColor: 'var(--border-primary)',
+            boxShadow: isMobileMenuOpen ? 'var(--shadow-lg)' : 'none'
+          }}
+        >
+          <nav className="container mx-auto px-4 sm:px-6 py-6">
+            <div className="flex flex-col space-y-1">
+              {navigation.map((item, index) => {
+                const isHashLink = item.href.startsWith("#");
+                const Component = isHashLink ? "a" : Link;
+                const props = isHashLink
+                  ? { href: item.href }
+                  : { href: item.href as any };
+                
+                return (
+                  <Component
+                    key={item.href}
+                    {...props}
+                    className="block py-3 px-4 rounded-lg text-base font-medium transition-all duration-300 hover:bg-[var(--hover-bg)] hover:translate-x-1 rtl:hover:translate-x-[-4px]"
+                    style={{ 
+                      color: 'var(--text-secondary)',
+                      animationDelay: `${index * 0.05}s`
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = 'var(--primary)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = 'var(--text-secondary)';
+                    }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Component>
+                );
+              })}
+            </div>
+          </nav>
+        </div>
       </nav>
     </header>
   );
