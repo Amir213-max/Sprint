@@ -1,34 +1,75 @@
 "use client";
 
 import { useTranslation } from "../hooks/useTranslation";
+import { useState } from "react";
 
 export default function WhyChooseUs() {
   const { t } = useTranslation();
   const advantages = t("whyChooseUs.items") as any[];
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16 lg:py-24 bg-[var(--bg-primary)]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[var(--text-primary)] text-center mb-12 lg:mb-16 uppercase tracking-tight animate-fade-in">
-          {t("whyChooseUs.title")}
-        </h2>
+    <section className="py-16 lg:py-24 bg-[var(--bg-primary)] relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-[var(--accent)]/5 rounded-full blur-2xl animate-float"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-[var(--primary)]/5 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[var(--text-primary)] mb-4 uppercase tracking-tight animate-slide-in-up">
+            {t("whyChooseUs.title")}
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] mx-auto rounded-full"></div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {advantages.map((advantage: any, index: number) => (
             <div
               key={advantage.id}
-              className="flex items-start space-x-4 rtl:space-x-reverse p-6 rounded-lg hover:bg-[var(--hover-bg)] transition-all transform hover:scale-105 animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group perspective-1000"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold text-[var(--accent)]" style={{ backgroundColor: 'rgba(0, 188, 212, 0.1)' }}>
-                {advantage.icon}
-              </div>
-              <div>
-                <h3 className="text-lg font-heading font-bold text-[var(--text-primary)] mb-2">
-                  {advantage.title}
-                </h3>
-                <p className="text-[var(--text-secondary)] leading-relaxed">
-                  {advantage.description}
-                </p>
+              <div
+                className={`flex items-start space-x-4 rtl:space-x-reverse p-8 rounded-xl bg-[var(--bg-card)] shadow-3d border border-[var(--border-primary)] transform-3d transition-all duration-500 animate-slide-in-up hover-3d relative overflow-hidden ${
+                  hoveredIndex === index ? 'shadow-3d-lg' : ''
+                }`}
+                style={{
+                  transform: hoveredIndex === index 
+                    ? 'perspective(1000px) rotateX(5deg) rotateY(-5deg) translateZ(20px)' 
+                    : 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)',
+                  animationDelay: `${index * 0.1}s`
+                }}
+              >
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/5 to-[var(--primary)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                {/* Icon with 3D Effect */}
+                <div className="flex-shrink-0 relative z-10">
+                  <div 
+                    className="w-16 h-16 rounded-xl flex items-center justify-center text-3xl font-bold text-[var(--accent)] transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-3d"
+                    style={{ 
+                      backgroundColor: 'rgba(0, 188, 212, 0.1)',
+                      transform: hoveredIndex === index ? 'scale(1.1) rotate(6deg) translateZ(20px)' : 'scale(1) rotate(0deg) translateZ(0px)'
+                    }}
+                  >
+                    {advantage.icon}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 relative z-10">
+                  <h3 className="text-lg font-heading font-bold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent)] transition-colors duration-300">
+                    {advantage.title}
+                  </h3>
+                  <p className="text-[var(--text-secondary)] leading-relaxed group-hover:text-[var(--text-primary)] transition-colors duration-300">
+                    {advantage.description}
+                  </p>
+                </div>
+
+                {/* Shine Effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                </div>
               </div>
             </div>
           ))}

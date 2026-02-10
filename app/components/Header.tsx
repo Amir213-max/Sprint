@@ -64,7 +64,6 @@ export default function Header({ companyName }: HeaderProps) {
       { label: t("navigation.about"), href: "/about" },
       { label: t("navigation.services"), href: "/services" },
       { label: t("navigation.whyUs"), href: "/why-us" },
-      { label: t("navigation.process"), href: "/#process" },
       { label: t("navigation.clients"), href: "/#clients" },
     ],
     [t]
@@ -75,7 +74,9 @@ export default function Header({ companyName }: HeaderProps) {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{ 
         backgroundColor: 'var(--bg-primary)',
-        boxShadow: isScrolled ? 'var(--shadow-md)' : 'var(--shadow-sm)'
+        boxShadow: isScrolled ? 'var(--shadow-md)' : 'var(--shadow-sm)',
+        backdropFilter: isScrolled ? 'blur(10px)' : 'none',
+        WebkitBackdropFilter: isScrolled ? 'blur(10px)' : 'none',
       }}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,31 +87,38 @@ export default function Header({ companyName }: HeaderProps) {
               href="/"
               className="flex items-center space-x-2 rtl:space-x-reverse"
             >
-              {/* Mobile & Medium: Colored Square */}
+              {/* Mobile & Medium: Colored Square with 3D */}
               <div 
-                className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center font-bold text-white transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center font-bold text-white transition-all duration-300 hover-3d perspective-1000 shadow-3d"
                 style={{ 
                   backgroundColor: 'var(--primary)',
-                  boxShadow: 'var(--shadow-md)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = 'var(--primary-dark)';
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateY(10deg) rotateX(-5deg) translateZ(10px)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = 'var(--primary)';
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateZ(0px)';
                 }}
               >
-                <span className="text-lg">S</span>
+                <span className="text-lg relative z-10">S</span>
               </div>
               
-              {/* Desktop (Large): Text Logo */}
+              {/* Desktop (Large): Text Logo with 3D */}
               <span
-                className="hidden lg:block text-xl lg:text-2xl font-heading font-bold transition-colors"
+                className="hidden lg:block text-xl lg:text-2xl font-heading font-bold transition-all duration-300 hover-3d perspective-1000"
                 style={{ 
                   color: 'var(--primary)'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-dark)'}
-                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--primary)'}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--primary-dark)';
+                  e.currentTarget.style.transform = 'perspective(1000px) translateZ(10px) scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'var(--primary)';
+                  e.currentTarget.style.transform = 'perspective(1000px) translateZ(0px) scale(1)';
+                }}
               >
                 {companyName}
               </span>
@@ -118,7 +126,7 @@ export default function Header({ companyName }: HeaderProps) {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8 rtl:space-x-reverse md:mr-6 lg:mr-8">
+          <div className="hidden md:flex md:items-center md:gap-6 lg:gap-8 md:mr-6 lg:mr-8">
             {navigation.map((item, index) => {
               const isHashLink = item.href.startsWith("#");
               const Component = isHashLink ? "a" : Link;
@@ -130,10 +138,17 @@ export default function Header({ companyName }: HeaderProps) {
                 <Component
                   key={item.href}
                   {...props}
-                  className="text-sm font-medium transition-colors animate-fade-in-up text-[var(--text-secondary)] hover:text-[var(--primary)]"
+                  className="group text-sm font-medium transition-all duration-300 animate-fade-in-up text-[var(--text-secondary)] hover:text-[var(--primary)] relative perspective-1000"
                   style={{ animationDelay: `${index * 0.1}s` }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'perspective(1000px) translateY(-2px) translateZ(5px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'perspective(1000px) translateY(0px) translateZ(0px)';
+                  }}
                 >
-                  {item.label}
+                  <span className="relative z-10">{item.label}</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--accent)] transition-all duration-300 group-hover:w-full"></span>
                 </Component>
               );
             })}
@@ -229,7 +244,7 @@ export default function Header({ companyName }: HeaderProps) {
           </div>
 
           {/* Mobile Menu Button & Controls */}
-          <div className="md:hidden flex items-center gap-3 rtl:gap-reverse">
+          <div className="md:hidden flex items-center gap-1.5 rtl:gap-reverse">
             {/* Mobile Language Switcher */}
             <div className="flex items-center space-x-1 rtl:space-x-reverse rounded-lg p-1" style={{ backgroundColor: 'var(--bg-tertiary)' }}>
               <button
@@ -277,9 +292,6 @@ export default function Header({ companyName }: HeaderProps) {
                 </svg>
               )}
             </button>
-
-            {/* Spacer for gap between theme toggle and menu button */}
-            <div className="w-2" />
 
             {/* Hamburger Menu Button */}
             <button
