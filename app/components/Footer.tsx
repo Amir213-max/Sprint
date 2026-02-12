@@ -28,15 +28,15 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[var(--primary-dark)] text-[var(--text-inverse)] py-12 lg:py-16">
+    <footer className="bg-[var(--primary-dark)] text-[var(--text-inverse)] py-8 sm:py-10 md:py-12 lg:py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 mb-6 sm:mb-8">
           {/* Company Info */}
           <div className="lg:col-span-2 animate-fade-in">
-            <h3 className="text-2xl font-heading font-bold mb-4">
+            <h3 className="text-xl sm:text-2xl font-heading font-bold mb-3 sm:mb-4">
               {t("footer.companyName")}
             </h3>
-            <p className="leading-relaxed mb-6 max-w-md" style={{ opacity: 0.9 }}>
+            <p className="text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 max-w-md" style={{ opacity: 0.9 }}>
               {t("footer.description")}
             </p>
             {/* Social Links */}
@@ -56,10 +56,10 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-            <h4 className="text-lg font-heading font-semibold mb-4">
+            <h4 className="text-base sm:text-lg font-heading font-semibold mb-3 sm:mb-4">
               {t("footer.quickLinks")}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base">
               {navigation.map((item) => {
                 const isHashLink = item.href.startsWith("#");
                 const Component = isHashLink ? "a" : Link;

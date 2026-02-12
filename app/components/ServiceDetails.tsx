@@ -34,17 +34,19 @@ export default function ServiceDetails() {
               {t("servicesPage.details.description")}
             </p>
             <div className="flex justify-center">
-              <div className="w-full max-w-2xl rounded-xl overflow-hidden shadow-3d-lg card-3d group">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 to-[var(--primary)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                <Image
-                  src="/photos/why_does_a_software_company_need_a_professional_services_team_0.jpg"
-                  alt={t("servicesPage.details.title")}
-                  width={800}
-                  height={500}
-                  quality={85}
-                  className="w-full h-auto object-cover image-enhanced transform group-hover:scale-110 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
-                />
+              <div className="w-full max-w-2xl image-organic-bg">
+                <div className="w-full rounded-xl overflow-hidden shadow-3d-lg card-3d group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 to-[var(--primary)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                  <Image
+                    src="/photos/why_does_a_software_company_need_a_professional_services_team_0.jpg"
+                    alt={t("servicesPage.details.title")}
+                    width={800}
+                    height={500}
+                    quality={85}
+                    className="w-full h-auto object-cover image-enhanced transform group-hover:scale-110 transition-transform duration-500 rounded-xl"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
+                  />
+                </div>
               </div>
             </div>
           </div>

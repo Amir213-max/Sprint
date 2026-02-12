@@ -9,8 +9,12 @@
     "contact": "Contact"
   },
   "hero": {
-    "headline": "Transform Your Business with Expert Marketing & Software Solutions",
-    "subtitle": "We deliver innovative digital strategies and cutting-edge software development services that drive growth and maximize your business potential.",
+    "headline": "Empower Your Success with Premium Digital Solutions",
+    "subtitle": "Partner with us to unlock your business potential through strategic marketing excellence and innovative software development that delivers measurable results.",
+    "belowSlider": {
+      "headline": "Your Trusted Partner in Digital Excellence",
+      "subtitle": "We combine creative marketing strategies with powerful software solutions to help your business thrive in the digital landscape. From concept to execution, we're with you every step of the way."
+    },
     "ctaText": "Get Started Today"
   },
   "about": {
@@ -395,6 +399,114 @@
     "clientTrust": {
       "title": "Our Clients' Trust",
       "description": "We are proud to build long-term relationships with our clients based on trust, transparency, and tangible results. Our clients are our true testimony to the quality of our services and our commitment to achieving success."
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "description": "Hear from our clients who have achieved tangible success with us",
+      "items": [
+        {
+          "id": "1",
+          "text": "Working with Sprint was an amazing experience. Professional team, innovative solutions, and results that exceeded expectations. Our sales increased by 40% in just 6 months.",
+          "author": "Ahmed Mohamed",
+          "position": "Marketing Manager - Advanced Tech Company"
+        },
+        {
+          "id": "2",
+          "text": "The service provided was exceptional. From planning to execution, everything was organized and professional. The website they developed for us helped us reach thousands of new customers.",
+          "author": "Fatima Ali",
+          "position": "Founder & CEO - E-Learning Platform"
+        },
+        {
+          "id": "3",
+          "text": "Sprint is not just a service provider, they are true partners in success. Their marketing strategies completely changed the course of our business. I highly recommend them.",
+          "author": "Khaled Ibrahim",
+          "position": "General Manager - E-Commerce Store"
+        },
+        {
+          "id": "4",
+          "text": "The app they developed for us was perfect. Easy to use, fast, and provides an excellent user experience. Rating: 4.9 out of 5 stars.",
+          "author": "Sara Hassan",
+          "position": "Product Manager - Services App"
+        },
+        {
+          "id": "5",
+          "text": "Transparency and commitment to deadlines were among their most important features. Detailed weekly reports, continuous communication, and measurable results. We are very happy working with them.",
+          "author": "Mohamed Abdullah",
+          "position": "Operations Manager - Financial Services Company"
+        },
+        {
+          "id": "6",
+          "text": "One of the best decisions we made was working with Sprint. Our website visits increased by 300% and sales increased by 250%. Truly amazing results.",
+          "author": "Nora Salem",
+          "position": "Digital Marketing Manager - Fashion Brand"
+        }
+      ]
+    },
+    "technologies": {
+      "title": "Technologies We Use",
+      "description": "We use the latest technologies and advanced tools to ensure the best results for our projects",
+      "items": [
+        {
+          "id": "1",
+          "name": "React",
+          "icon": "⚛️"
+        },
+        {
+          "id": "2",
+          "name": "Next.js",
+          "icon": "▲"
+        },
+        {
+          "id": "3",
+          "name": "Node.js",
+          "icon": "🟢"
+        },
+        {
+          "id": "4",
+          "name": "Python",
+          "icon": "🐍"
+        },
+        {
+          "id": "5",
+          "name": "TypeScript",
+          "icon": "📘"
+        },
+        {
+          "id": "6",
+          "name": "AWS",
+          "icon": "☁️"
+        },
+        {
+          "id": "7",
+          "name": "Docker",
+          "icon": "🐳"
+        },
+        {
+          "id": "8",
+          "name": "MongoDB",
+          "icon": "🍃"
+        },
+        {
+          "id": "9",
+          "name": "PostgreSQL",
+          "icon": "🐘"
+        },
+        {
+          "id": "10",
+          "name": "GraphQL",
+          "icon": "🔷"
+        },
+        {
+          "id": "11",
+          "name": "Firebase",
+          "icon": "🔥"
+        },
+        {
+          "id": "12",
+          "name": "Git",
+          "icon": "📦"
+        }
+      ]
     },
     "cta": {
       "title": "Ready to Work With Us?",

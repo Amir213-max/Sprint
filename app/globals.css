@@ -309,6 +309,153 @@ body {
   }
 }
 
+@keyframes slideIn3D {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(45deg) translateX(100px) translateZ(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0deg) translateX(0) translateZ(0);
+  }
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-infinite-mobile {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-infinite {
+  animation: scroll-infinite 25s linear infinite;
+  will-change: transform;
+}
+
+/* Mobile: Same animation but faster for seamless flow */
+@media (max-width: 640px) {
+  .animate-scroll-infinite {
+    animation: scroll-infinite-mobile 20s linear infinite;
+  }
+}
+
+/* Pause animation on hover */
+.animate-scroll-infinite:hover {
+  animation-play-state: paused;
+}
+
+/* Infinite Image Marquee Animation */
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marqueeScroll 35s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover and touch */
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  
+  .marquee-track {
+    transform: translateX(0);
+  }
+}
+
+/* Seamless Infinite Slider Animation */
+@keyframes seamlessScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* RTL Support - Reverse animation direction */
+@keyframes seamlessScrollRTL {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+.slider-track {
+  display: flex;
+  width: max-content;
+  animation: seamlessScroll linear infinite;
+  will-change: transform;
+  /* Duration is set dynamically via inline style */
+}
+
+/* RTL: Reverse animation direction */
+[dir="rtl"] .slider-track {
+  animation-name: seamlessScrollRTL !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+  /* Duration is set dynamically via inline style */
+}
+
+/* Pause animation on hover */
+.slider-track:hover {
+  animation-play-state: paused;
+}
+
+/* Pause animation on touch (mobile) */
+@media (hover: none) and (pointer: coarse) {
+  .slider-track:active {
+    animation-play-state: paused;
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .slider-track {
+    animation: none;
+  }
+  
+  .slider-track {
+    transform: translateX(0);
+  }
+}
+
 @keyframes gradientShift {
   0%, 100% {
     background-position: 0% 50%;
@@ -521,6 +668,145 @@ textarea:focus-visible {
 .image-enhanced:hover {
   filter: contrast(1.1) brightness(1.05) saturate(1.15);
   -webkit-filter: contrast(1.1) brightness(1.05) saturate(1.15);
+}
+
+/* Organic Blob Background for Images - Modern Agency Style */
+.image-organic-bg {
+  position: relative;
+  display: inline-block;
+  /* Organic blob shape using border-radius percentages */
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  /* Subtle gradient background */
+  background: linear-gradient(135deg, 
+    var(--primary) 0%, 
+    var(--accent) 50%, 
+    var(--primary-dark) 100%);
+  background-size: 200% 200%;
+  padding: 0.75rem;
+  overflow: hidden;
+  /* GPU-friendly transforms */
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover interaction - subtle scale and rotation */
+.image-organic-bg:hover {
+  transform: scale(1.03) rotate(0.5deg) translateZ(0);
+}
+
+/* Single ::before pseudo element for depth */
+.image-organic-bg::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(
+    ellipse 600px 500px at 30% 40%,
+    var(--accent-light) 0%,
+    transparent 60%
+  );
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  opacity: 0.4;
+  z-index: 0;
+  /* Subtle blur - max 8px */
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* Image content styling */
+.image-organic-bg .organic-image-content,
+.image-organic-bg > img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Inherit organic border radius */
+  border-radius: 38% 54% 59% 33% / 37% 40% 52% 55%;
+  overflow: hidden;
+  display: block;
+}
+
+/* Support for fill prop */
+.image-organic-bg[data-fill="true"] {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.image-organic-bg[data-fill="true"] .organic-image-content {
+  position: absolute;
+  inset: 0;
+}
+
+
+/* Blue Gradient Background for Images */
+.image-with-gradient-bg {
+  position: relative;
+  background: linear-gradient(135deg, 
+    var(--primary) 0%, 
+    var(--primary-dark) 25%, 
+    var(--accent) 50%, 
+    var(--primary) 75%, 
+    var(--primary-dark) 100%);
+  background-size: 200% 200%;
+  animation: gradientFlow 8s ease infinite;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.image-with-gradient-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 30% 20%,
+    var(--accent-light) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    ellipse at 70% 80%,
+    var(--accent) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    ellipse at 50% 50%,
+    var(--primary) 0%,
+    transparent 70%
+  );
+  border-radius: 0.75rem;
+  opacity: 0.6;
+  z-index: 0;
+  animation: organicFlow 12s ease-in-out infinite;
+}
+
+.image-with-gradient-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes organicFlow {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  33% {
+    transform: scale(1.1) rotate(5deg);
+    opacity: 0.7;
+  }
+  66% {
+    transform: scale(0.95) rotate(-5deg);
+    opacity: 0.5;
+  }
 }
 
 /* Image Sharpening for Low Quality Images */

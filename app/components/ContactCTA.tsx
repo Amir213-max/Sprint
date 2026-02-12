@@ -10,7 +10,7 @@ export default function ContactCTA() {
   return (
     <section
       id="contact"
-      className="py-16 lg:py-24 bg-gradient-to-br from-[var(--primary-dark)] via-[var(--primary)] to-[var(--accent)] relative overflow-hidden"
+      className="py-8 sm:py-12 md:py-16 lg:py-24 bg-gradient-to-br from-[var(--primary-dark)] via-[var(--primary)] to-[var(--accent)] relative overflow-hidden"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 opacity-20">
@@ -25,15 +25,15 @@ export default function ContactCTA() {
             isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-6 drop-shadow-lg">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-4 sm:mb-6 drop-shadow-lg px-2">
             {t("contactCTA.title")}
           </h2>
-          <p className="text-lg sm:text-xl text-white mb-8 leading-relaxed" style={{ opacity: 0.95 }}>
+          <p className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 leading-relaxed px-2" style={{ opacity: 0.95 }}>
             {t("contactCTA.description")}
           </p>
           <a
             href="#contact"
-            className="group inline-block bg-white text-[var(--primary)] px-10 py-5 rounded-xl font-semibold text-base hover:bg-[var(--bg-secondary)] transition-all shadow-3d-lg hover:shadow-3d transform hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-white/50 relative overflow-hidden"
+            className="group inline-block bg-white text-[var(--primary)] px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base hover:bg-[var(--bg-secondary)] transition-all shadow-3d-lg hover:shadow-3d transform hover:scale-110 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-white/50 relative overflow-hidden"
             aria-label={t("contactCTA.ctaText")}
           >
             <span className="relative z-10">{t("contactCTA.ctaText")}</span>

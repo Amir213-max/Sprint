@@ -62,19 +62,21 @@ export default function ServicesHero() {
               transition: 'transform 0.1s ease-out'
             }}
           >
-            <div className="w-full max-w-lg rounded-2xl overflow-hidden shadow-3d-lg card-3d relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/20 to-[var(--primary)]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-              <Image
-                src="/photos/ScreenShot2023-01-13at11.webp"
-                alt={t("servicesPage.hero.title")}
-                width={600}
-                height={400}
-                quality={85}
-                className="w-full h-auto object-cover rounded-2xl image-enhanced transform group-hover:scale-110 transition-transform duration-500"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-              />
-              <div className="absolute inset-0 border-2 border-[var(--accent)]/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="w-full max-w-lg image-organic-bg">
+              <div className="w-full rounded-2xl overflow-hidden shadow-3d-lg card-3d relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/20 to-[var(--primary)]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                <Image
+                  src="/photos/ScreenShot2023-01-13at11.webp"
+                  alt={t("servicesPage.hero.title")}
+                  width={600}
+                  height={400}
+                  quality={85}
+                  className="w-full h-auto object-cover rounded-2xl image-enhanced transform group-hover:scale-110 transition-transform duration-500"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                />
+                <div className="absolute inset-0 border-2 border-[var(--accent)]/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
             </div>
           </div>
         </div>

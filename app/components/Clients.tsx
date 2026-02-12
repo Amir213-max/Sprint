@@ -19,7 +19,7 @@ export default function Clients() {
   return (
     <section
       id="clients"
-      className="py-16 lg:py-24 bg-[var(--bg-primary)] relative overflow-hidden"
+      className="py-8 sm:py-12 md:py-16 lg:py-24 bg-[var(--bg-primary)] relative overflow-hidden"
     >
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-20">
@@ -28,13 +28,13 @@ export default function Clients() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[var(--text-primary)] mb-4 uppercase tracking-tight animate-slide-in-up">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-[var(--text-primary)] mb-3 sm:mb-4 uppercase tracking-tight animate-slide-in-up px-2">
             {t("clients.title")}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] mx-auto rounded-full"></div>
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] mx-auto rounded-full"></div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {clientImages.map((imagePath, index) => (
             <div
               key={index}
@@ -43,7 +43,7 @@ export default function Clients() {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <div
-                className={`bg-[var(--bg-secondary)] rounded-xl p-6 flex items-center justify-center h-32 border-2 border-[var(--border-primary)] transform-3d transition-all duration-500 animate-zoom-in overflow-hidden shadow-3d hover-3d relative ${
+                className={`bg-[var(--bg-secondary)] rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center h-24 sm:h-28 md:h-32 border border-[var(--border-primary)] sm:border-2 transform-3d transition-all duration-500 animate-zoom-in overflow-hidden shadow-3d hover-3d relative ${
                   hoveredIndex === index ? 'border-[var(--accent)] shadow-3d-lg' : ''
                 }`}
                 style={{
@@ -57,13 +57,13 @@ export default function Clients() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 to-[var(--primary)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 {/* Image */}
-                <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-500">
+                <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-500 image-organic-bg p-2 rounded-lg">
                   <Image
                     src={imagePath}
                     alt={`Client ${index + 1}`}
                     width={120}
                     height={80}
-                    className="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-500"
+                    className="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-500 rounded-lg"
                   />
                 </div>
 

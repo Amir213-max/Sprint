@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import OrganicImage from "./ui/OrganicImage";
 import { useTranslation } from "../hooks/useTranslation";
 import { useRef, useState, useEffect } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
@@ -62,20 +62,16 @@ export default function AboutHero() {
               transition: 'transform 0.1s ease-out'
             }}
           >
-            <div className="w-full max-w-lg rounded-2xl overflow-hidden shadow-3d-lg card-3d relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/20 to-[var(--primary)]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-              <Image
-                src="/about us/1520159441501.jpg"
-                alt={t("aboutPage.hero.title")}
-                width={600}
-                height={400}
-                quality={85}
-                className="w-full h-auto object-cover rounded-2xl image-enhanced transform group-hover:scale-110 transition-transform duration-500"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-              />
-              <div className="absolute inset-0 border-2 border-[var(--accent)]/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
+            <OrganicImage
+              src="/about us/1520159441501.jpg"
+              alt={t("aboutPage.hero.title")}
+              width={600}
+              height={400}
+              quality={85}
+              className="w-full max-w-lg h-auto shadow-3d-lg"
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+            />
           </div>
         </div>
       </div>

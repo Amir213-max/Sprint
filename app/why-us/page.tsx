@@ -6,6 +6,8 @@ import CoreStrengths from "../components/CoreStrengths";
 import Differentiators from "../components/Differentiators";
 import WhyUsStats from "../components/WhyUsStats";
 import ClientTrust from "../components/ClientTrust";
+import Testimonials from "../components/Testimonials";
+import Technologies from "../components/Technologies";
 import WhyUsCTA from "../components/WhyUsCTA";
 import SkipLink from "../components/SkipLink";
 
@@ -30,6 +32,8 @@ export default function WhyUsPage() {
         <CoreStrengths />
         <Differentiators />
         <WhyUsStats />
+        <Testimonials />
+        <Technologies />
         <ClientTrust />
         <WhyUsCTA />
         <Footer />

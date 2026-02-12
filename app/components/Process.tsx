@@ -18,11 +18,11 @@ export default function Process() {
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[var(--primary)]/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-[var(--text-primary)] mb-4 uppercase tracking-tight animate-slide-in-up">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-[var(--text-primary)] mb-3 sm:mb-4 uppercase tracking-tight animate-slide-in-up px-2">
             {t("process.title")}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] mx-auto rounded-full"></div>
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] mx-auto rounded-full"></div>
         </div>
         <div className="max-w-5xl mx-auto">
           {/* Desktop: Horizontal Timeline with 3D */}
@@ -41,7 +41,7 @@ export default function Process() {
               >
                 {/* 3D Step Circle */}
                 <div
-                  className={`bg-[var(--bg-card)] rounded-full w-32 h-32 flex items-center justify-center mx-auto mb-6 shadow-3d border-4 border-[var(--accent)] z-10 transform-3d transition-all duration-500 animate-zoom-in relative overflow-hidden ${
+                  className={`bg-[var(--bg-card)] rounded-full w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-3d border-2 md:border-4 border-[var(--accent)] z-10 transform-3d transition-all duration-500 animate-zoom-in relative overflow-hidden ${
                     hoveredIndex === index ? 'shadow-3d-lg' : ''
                   }`}
                   style={{
@@ -55,7 +55,7 @@ export default function Process() {
                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/20 to-[var(--primary)]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   {/* Number */}
-                  <span className="text-4xl font-heading font-bold text-[var(--text-primary)] relative z-10 transform group-hover:scale-110 transition-transform duration-500">
+                  <span className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-[var(--text-primary)] relative z-10 transform group-hover:scale-110 transition-transform duration-500">
                     {step.number}
                   </span>
 
@@ -86,7 +86,7 @@ export default function Process() {
           </div>
 
           {/* Mobile: Vertical Timeline with 3D */}
-          <div className="lg:hidden space-y-8">
+          <div className="lg:hidden space-y-4 sm:space-y-6 md:space-y-8">
             {steps.map((step: any, index: number) => (
               <div
                 key={step.id}
@@ -95,7 +95,7 @@ export default function Process() {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div
-                  className={`flex items-start space-x-4 rtl:space-x-reverse p-6 rounded-xl bg-[var(--bg-card)] shadow-3d border border-[var(--border-primary)] transform-3d transition-all duration-500 animate-slide-in-up ${
+                  className={`flex items-start space-x-3 sm:space-x-4 rtl:space-x-reverse p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl bg-[var(--bg-card)] shadow-3d border border-[var(--border-primary)] transform-3d transition-all duration-500 animate-slide-in-up ${
                     hoveredIndex === index ? 'shadow-3d-lg' : ''
                   }`}
                   style={{
@@ -108,14 +108,14 @@ export default function Process() {
                   {/* 3D Step Circle */}
                   <div className="flex-shrink-0">
                     <div
-                      className="w-20 h-20 rounded-full flex items-center justify-center shadow-3d border-4 border-[var(--accent)] transform group-hover:scale-110 transition-all duration-500 relative overflow-hidden"
+                      className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full flex items-center justify-center shadow-3d border-2 sm:border-3 md:border-4 border-[var(--accent)] transform group-hover:scale-110 transition-all duration-500 relative overflow-hidden"
                       style={{
                         backgroundColor: 'var(--bg-card)',
                         transform: hoveredIndex === index ? 'scale(1.1) rotate(10deg)' : 'scale(1) rotate(0deg)'
                       }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/20 to-[var(--primary)]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      <span className="text-2xl font-heading font-bold text-[var(--text-primary)] relative z-10">
+                      <span className="text-xl sm:text-2xl font-heading font-bold text-[var(--text-primary)] relative z-10">
                         {step.number}
                       </span>
                     </div>
@@ -123,10 +123,10 @@ export default function Process() {
                   
                   {/* Content */}
                   <div className="flex-1">
-                    <h3 className="text-xl font-heading font-bold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent)] transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-heading font-bold text-[var(--text-primary)] mb-1 sm:mb-2 group-hover:text-[var(--accent)] transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-[var(--text-secondary)] leading-relaxed group-hover:text-[var(--text-primary)] transition-colors duration-300">
+                    <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed group-hover:text-[var(--text-primary)] transition-colors duration-300">
                       {step.description}
                     </p>
                   </div>

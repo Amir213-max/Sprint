@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Services from "./components/Services";
+import MidPageSlider from "./components/MidPageSlider";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Process from "./components/Process";
 import Clients from "./components/Clients";
@@ -19,6 +20,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
+      <MidPageSlider />
       <WhyChooseUs />
       <Process />
       <Clients />
