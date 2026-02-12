@@ -71,6 +71,6 @@ export const CONTRAST_AUDIT = {
   'accent-light-blue-on-dark': getContrastRatio('#4fc3f7', '#111827'), // ~5.1:1 ✅ AA
   
   // Buttons and interactive elements
-  'white-on-primary-navy': getContrastRatio('#ffffff', '#1e3a5f'), // ~8.2:1 ✅ AAA
-  'white-on-dark-blue': getContrastRatio('#ffffff', '#0f2a47'), // ~10.5:1 ✅ AAA
+  'white-on-primary-navy': getContrastRatio('#ffffff', '#295F75'), // ✅ AAA
+  'white-on-dark-blue': getContrastRatio('#ffffff', '#1a3d4d'), // ✅ AAA
 };

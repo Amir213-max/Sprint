@@ -19,8 +19,8 @@
   --text-inverse: #ffffff;
   
   /* Light Mode - Brand Colors */
-  --primary: #1e3a5f;
-  --primary-dark: #0f2a47;
+  --primary: #295F75;
+  --primary-dark: #1a3d4d;
   --accent: #00bcd4;
   --accent-light: #4fc3f7;
   
@@ -54,8 +54,8 @@
   --text-inverse: #0f172a;
   
   /* Dark Mode - Brand Colors (adjusted for contrast) */
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
+  --primary: #3a7a95;
+  --primary-dark: #295F75;
   --accent: #06b6d4;
   --accent-light: #22d3ee;
   
@@ -110,11 +110,16 @@
 
 /* Font Variables */
 :root {
-  --font-heading: var(--font-heading-en);
-  --font-body: var(--font-body-en);
+  --font-heading: var(--font-arabic);
+  --font-body: var(--font-arabic);
 }
 
 [dir="rtl"] {
+  --font-heading: var(--font-arabic);
+  --font-body: var(--font-arabic);
+}
+
+[dir="ltr"] {
   --font-heading: var(--font-arabic);
   --font-body: var(--font-arabic);
 }
