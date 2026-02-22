@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useApp } from "../contexts/AppContext";
 import { useTranslation } from "../hooks/useTranslation";
 
@@ -85,43 +86,26 @@ export default function Header({ companyName }: HeaderProps) {
           <div className="flex-shrink-0 animate-fade-in">
             <Link
               href="/"
-              className="flex items-center space-x-2 rtl:space-x-reverse"
+              className="flex items-center space-x-2 rtl:space-x-reverse group"
             >
-              {/* Mobile & Medium: Colored Square with 3D */}
-              <div 
-                className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center font-bold text-white transition-all duration-300 hover-3d perspective-1000 shadow-3d"
-                style={{ 
-                  backgroundColor: 'var(--primary)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--primary-dark)';
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateY(10deg) rotateX(-5deg) translateZ(10px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'var(--primary)';
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateZ(0px)';
-                }}
-              >
-                <span className="text-lg relative z-10">S</span>
+              {/* Logo Image with Circular Background */}
+              <div className="relative ">
+                <div 
+                 
+                >
+                  <Image
+                    src="/logo.png"
+                    alt={companyName}
+                    width={280}
+                    height={100}
+                    className="h-16 sm:h-20 lg:h-28 w-auto object-contain transition-all duration-300"
+                    priority
+                    style={{
+                      filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
+                    }}
+                  />
+                </div>
               </div>
-              
-              {/* Desktop (Large): Text Logo with 3D */}
-              <span
-                className="hidden lg:block text-xl lg:text-2xl font-heading font-bold transition-all duration-300 hover-3d perspective-1000"
-                style={{ 
-                  color: 'var(--primary)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = 'var(--primary-dark)';
-                  e.currentTarget.style.transform = 'perspective(1000px) translateZ(10px) scale(1.05)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'var(--primary)';
-                  e.currentTarget.style.transform = 'perspective(1000px) translateZ(0px) scale(1)';
-                }}
-              >
-                {companyName}
-              </span>
             </Link>
           </div>
 

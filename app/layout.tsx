@@ -31,10 +31,29 @@ export const metadata: Metadata = {
   description: "Professional marketing and software solutions company delivering innovative digital solutions for your business growth.",
   keywords: ["marketing", "software solutions", "digital marketing", "web development", "business growth"],
   authors: [{ name: "Sprint Marketing & Software Solutions" }],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "Sprint Marketing & Software Solutions",
     description: "Professional marketing and software solutions company delivering innovative digital solutions for your business growth.",
     type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Sprint Marketing & Software Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sprint Marketing & Software Solutions",
+    description: "Professional marketing and software solutions company delivering innovative digital solutions for your business growth.",
+    images: ["/logo.png"],
   },
 };
 
