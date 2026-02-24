@@ -158,10 +158,50 @@ export default function Footer() {
             <h4 className="text-lg font-heading font-semibold mb-4">
               {t("footer.contact")}
             </h4>
-            <ul className="space-y-2" style={{ color: 'var(--text-inverse)', opacity: 0.8 }}>
-              <li>Email: info@sprint.com</li>
-              <li>Phone: +1 (555) 123-4567</li>
-              <li>Address: 123 Business St, City, State 12345</li>
+            <ul className="space-y-3 text-sm sm:text-base">
+              <li className="flex items-start gap-2 rtl:gap-reverse">
+                <span className="text-[var(--text-inverse)] opacity-70 min-w-[60px] rtl:text-right ltr:text-left">{t("footer.Email")}:</span>
+                <a 
+                  href="mailto:sprintmarkting@gmail.com"
+                  className="text-[var(--text-inverse)] hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)] break-all"
+                  style={{ opacity: 0.9 }}
+                >
+                  sprintmarkting@gmail.com
+                </a>
+              </li>
+              
+              <li className="flex items-start gap-2 rtl:gap-reverse">
+                <span className="text-[var(--text-inverse)] opacity-70 min-w-[60px] rtl:text-right ltr:text-left">{t("footer.Phone")}:</span>
+                <div className="flex flex-col gap-1.5">
+                  <a 
+                    href="tel:+966546348032"
+                    className="text-[var(--text-inverse)] hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
+                    style={{ opacity: 0.9 }}
+                  >
+                    +966 54 634 8032
+                  </a>
+                  <a 
+                    href="tel:+966565227485"
+                    className="text-[var(--text-inverse)] hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
+                    style={{ opacity: 0.9 }}
+                  >
+                    +966 56 522 7485
+                  </a>
+                </div>
+              </li>
+              
+              <li className="flex items-start gap-2 rtl:gap-reverse">
+                <span className="text-[var(--text-inverse)] opacity-70 min-w-[60px] rtl:text-right ltr:text-left">{t("footer.Address")}:</span>
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=Riyadh,+Saudi+Arabia+11461" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--text-inverse)] hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
+                  style={{ opacity: 0.9 }}
+                >
+                  Riyadh, Saudi Arabia 11461
+                </a>
+              </li>
             </ul>
           </div>
         </div>
