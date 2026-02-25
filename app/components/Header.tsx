@@ -88,20 +88,21 @@ export default function Header({ companyName }: HeaderProps) {
               href="/"
               className="flex items-center space-x-2 rtl:space-x-reverse group"
             >
-              {/* Logo Image with Circular Background */}
-              <div className="relative ">
-                <div 
-                 
-                >
+              {/* Logo Image with Theme-based Animation */}
+              <div className="relative">
+                <div className="relative w-full h-full">
                   <Image
-                    src="/logo.png"
+                    key={theme}
+                    src={theme === "light" ? "/logo/logo---blue.png" : "/logo/logo---white.png"}
                     alt={companyName}
                     width={280}
                     height={100}
-                    className="h-16 sm:h-20 lg:h-28 w-auto object-contain transition-all duration-300"
+                    className="h-16 sm:h-20 lg:h-28 w-auto object-contain"
                     priority
                     style={{
-                      filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
+                      filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))',
+                      animation: 'fadeIn 0.5s ease-in-out',
+                      transition: 'opacity 0.5s ease-in-out'
                     }}
                   />
                 </div>

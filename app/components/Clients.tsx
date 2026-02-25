@@ -8,12 +8,21 @@ export default function Clients() {
   const { t } = useTranslation();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const clientImages = [
-    "/customers/download (1).png",
-    "/customers/download (2).png",
-    "/customers/download (3).png",
-    "/customers/download (4).png",
-    "/customers/download.jpg",
-    "/customers/download.png",
+    "/customers/1.png",
+    "/customers/2.png",
+    "/customers/3.png",
+    "/customers/5.png",
+    "/customers/6.png",
+    "/customers/7.png",
+    "/customers/8.png",
+    "/customers/9.png",
+    "/customers/11.png",
+    "/customers/12.png",
+    "/customers/13.png",
+    "/customers/14.png",
+    "/customers/348258049_257315513655218_2118163845715870427_n.png",
+    "/customers/588817523_1508528140842693_6503820176450315642_n.jpg.jpeg",
+    "/customers/Untitled-1.png",
   ];
 
   return (
@@ -34,42 +43,63 @@ export default function Clients() {
           </h2>
           <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] mx-auto rounded-full"></div>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
           {clientImages.map((imagePath, index) => (
             <div
               key={index}
-              className="group perspective-1000"
+              className="group perspective-1000 flex items-center justify-center"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <div
-                className={`bg-[var(--bg-secondary)] rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center h-24 sm:h-28 md:h-32 border border-[var(--border-primary)] sm:border-2 transform-3d transition-all duration-500 animate-zoom-in overflow-hidden shadow-3d hover-3d relative ${
-                  hoveredIndex === index ? 'border-[var(--accent)] shadow-3d-lg' : ''
-                }`}
+                className="relative transform-3d transition-all duration-700 ease-out animate-zoom-in overflow-visible"
                 style={{
                   transform: hoveredIndex === index 
-                    ? 'perspective(1000px) rotateY(10deg) rotateX(-5deg) translateZ(30px)' 
-                    : 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateZ(0px)',
-                  animationDelay: `${index * 0.1}s`
+                    ? 'perspective(1000px) rotateY(5deg) rotateX(-3deg) translateZ(40px) scale(1.15)' 
+                    : 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateZ(0px) scale(1)',
+                  animationDelay: `${index * 0.05}s`,
+                  filter: hoveredIndex === index 
+                    ? 'drop-shadow(0 20px 40px rgba(41, 95, 117, 0.4))' 
+                    : 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))'
                 }}
               >
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 to-[var(--primary)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Glow Effect */}
+                <div 
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"
+                  style={{
+                    background: `radial-gradient(circle, var(--accent) 0%, transparent 70%)`,
+                    transform: 'scale(1.5)',
+                    zIndex: -1
+                  }}
+                />
                 
-                {/* Image */}
-                <div className="relative z-10 transform group-hover:scale-110 transition-transform duration-500 image-organic-bg p-2 rounded-lg">
+                {/* Image Container */}
+                <div className="relative z-10 transform transition-all duration-700 ease-out">
                   <Image
                     src={imagePath}
                     alt={`Client ${index + 1}`}
-                    width={120}
-                    height={80}
-                    className="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-500 rounded-lg"
+                    width={160}
+                    height={100}
+                    className="w-full h-auto object-contain transition-all duration-700 ease-out"
+                    style={{
+                      filter: hoveredIndex === index 
+                        ? 'brightness(1.1) contrast(1.05)' 
+                        : 'brightness(1) contrast(1)'
+                    }}
                   />
                 </div>
 
                 {/* Shine Effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none overflow-hidden rounded-2xl">
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12"
+                    style={{
+                      transform: hoveredIndex === index 
+                        ? 'translateX(200%) skewX(-12deg)' 
+                        : 'translateX(-200%) skewX(-12deg)',
+                      transition: 'transform 1s ease-out'
+                    }}
+                  />
                 </div>
               </div>
             </div>

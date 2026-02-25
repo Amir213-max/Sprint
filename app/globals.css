@@ -19,8 +19,8 @@
   --text-inverse: #ffffff;
   
   /* Light Mode - Brand Colors */
-  --primary: #295F75;
-  --primary-dark: #1a3d4d;
+  --primary: #0e104b;
+  --primary-dark: #080a2e;
   --accent: #00bcd4;
   --accent-light: #4fc3f7;
   
@@ -54,8 +54,8 @@
   --text-inverse: #0f172a;
   
   /* Dark Mode - Brand Colors (adjusted for contrast) */
-  --primary: #3a7a95;
-  --primary-dark: #295F75;
+  --primary: #0e104b;
+  --primary-dark: #080a2e;
   --accent: #06b6d4;
   --accent-light: #22d3ee;
   

@@ -4,9 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMemo } from "react";
 import { useTranslation } from "../hooks/useTranslation";
+import { useApp } from "../contexts/AppContext";
 
 export default function Footer() {
   const { t, language } = useTranslation();
+  const { theme } = useApp();
 
   const navigation = useMemo(
     () => [
@@ -76,20 +78,29 @@ export default function Footer() {
           <div className="lg:col-span-2 animate-fade-in">
             <div className="mb-4 sm:mb-6">
               <Image
-                src="/logo.png"
+                key={theme}
+                src={theme === "light" ? "/logo/logo---blue.png" : "/logo/logo---white.png"}
                 alt={t("footer.companyName")}
                 width={220}
                 height={75}
                 className="h-14 sm:h-20 lg:h-24 w-auto object-contain block"
-               
                 priority
-                unoptimized={false}
+                style={{
+                 
+                  animation: 'fadeIn 0.5s ease-in-out',
+                  transition: 'opacity 0.5s ease-in-out'
+                }}
               />
             </div>
-            <h3 className="text-xl sm:text-2xl font-heading font-bold mb-3 sm:mb-4">
+            <h3 className="text-xl sm:text-2xl font-heading font-bold mb-3 sm:mb-4" style={{ 
+              color: theme === "dark" ? 'var(--text-primary)' : 'var(--text-inverse)'
+            }}>
               {t("footer.companyName")}
             </h3>
-            <p className="text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 max-w-md" style={{ opacity: 0.9 }}>
+            <p className="text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 max-w-md" style={{ 
+              color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+              opacity: theme === "dark" ? 1 : 0.9
+            }}>
               {t("footer.description")}
             </p>
             {/* Social Links */}
@@ -118,7 +129,12 @@ export default function Footer() {
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
-                  <span className="transition-all duration-300 group-hover:scale-110">
+                  <span 
+                    className="transition-all duration-300 group-hover:scale-110"
+                    style={{
+                      color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)'
+                    }}
+                  >
                     {social.icon}
                   </span>
                 </a>
@@ -128,7 +144,12 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-            <h4 className="text-base sm:text-lg font-heading font-semibold mb-3 sm:mb-4">
+            <h4 
+              className="text-base sm:text-lg font-heading font-semibold mb-3 sm:mb-4"
+              style={{
+                color: theme === "dark" ? 'var(--text-primary)' : 'var(--text-inverse)'
+              }}
+            >
               {t("footer.quickLinks")}
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base">
@@ -143,7 +164,17 @@ export default function Footer() {
                   <li key={item.href}>
                     <Component
                       {...props}
-                      className="hover:text-[var(--text-inverse)] transition-colors" style={{ color: 'var(--text-inverse)', opacity: 0.8 }}
+                      className="transition-colors" 
+                      style={{ 
+                        color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+                        opacity: theme === "dark" ? 1 : 0.8
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = theme === "dark" ? 'var(--text-primary)' : 'var(--text-inverse)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)';
+                      }}
                     >
                       {item.label}
                     </Component>
@@ -155,35 +186,65 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <h4 className="text-lg font-heading font-semibold mb-4">
+            <h4 
+              className="text-lg font-heading font-semibold mb-4"
+              style={{
+                color: theme === "dark" ? 'var(--text-primary)' : 'var(--text-inverse)'
+              }}
+            >
               {t("footer.contact")}
             </h4>
             <ul className="space-y-3 text-sm sm:text-base">
               <li className="flex items-start gap-2 rtl:gap-reverse">
-                <span className="text-[var(--text-inverse)] opacity-70 min-w-[60px] rtl:text-right ltr:text-left">{t("footer.Email")}:</span>
+                <span 
+                  className="min-w-[60px] rtl:text-right ltr:text-left"
+                  style={{ 
+                    color: theme === "dark" ? 'var(--text-tertiary)' : 'var(--text-inverse)',
+                    opacity: theme === "dark" ? 1 : 0.7
+                  }}
+                >
+                  {t("footer.Email")}:
+                </span>
                 <a 
                   href="mailto:sprintmarkting@gmail.com"
-                  className="text-[var(--text-inverse)] hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)] break-all"
-                  style={{ opacity: 0.9 }}
+                  className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)] break-all"
+                  style={{ 
+                    color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+                    opacity: theme === "dark" ? 1 : 0.9
+                  }}
                 >
                   sprintmarkting@gmail.com
                 </a>
               </li>
               
               <li className="flex items-start gap-2 rtl:gap-reverse">
-                <span className="text-[var(--text-inverse)] opacity-70 min-w-[60px] rtl:text-right ltr:text-left">{t("footer.Phone")}:</span>
+                <span 
+                  className="min-w-[60px] rtl:text-right ltr:text-left"
+                  style={{ 
+                    color: theme === "dark" ? 'var(--text-tertiary)' : 'var(--text-inverse)',
+                    opacity: theme === "dark" ? 1 : 0.7
+                  }}
+                >
+                  {t("footer.Phone")}:
+                </span>
                 <div className="flex flex-col gap-1.5">
                   <a 
                     href="tel:+966546348032"
-                    className="text-[var(--text-inverse)] hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
-                    style={{ opacity: 0.9 }}
+                    className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
+                    style={{ 
+                      color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+                      opacity: theme === "dark" ? 1 : 0.9
+                    }}
                   >
                     +966 54 634 8032
                   </a>
                   <a 
                     href="tel:+966565227485"
-                    className="text-[var(--text-inverse)] hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
-                    style={{ opacity: 0.9 }}
+                    className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
+                    style={{ 
+                      color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+                      opacity: theme === "dark" ? 1 : 0.9
+                    }}
                   >
                     +966 56 522 7485
                   </a>
@@ -191,13 +252,24 @@ export default function Footer() {
               </li>
               
               <li className="flex items-start gap-2 rtl:gap-reverse">
-                <span className="text-[var(--text-inverse)] opacity-70 min-w-[60px] rtl:text-right ltr:text-left">{t("footer.Address")}:</span>
+                <span 
+                  className="min-w-[60px] rtl:text-right ltr:text-left"
+                  style={{ 
+                    color: theme === "dark" ? 'var(--text-tertiary)' : 'var(--text-inverse)',
+                    opacity: theme === "dark" ? 1 : 0.7
+                  }}
+                >
+                  {t("footer.Address")}:
+                </span>
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=Riyadh,+Saudi+Arabia+11461" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[var(--text-inverse)] hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
-                  style={{ opacity: 0.9 }}
+                  className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
+                  style={{ 
+                    color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+                    opacity: theme === "dark" ? 1 : 0.9
+                  }}
                 >
                   Riyadh, Saudi Arabia 11461
                 </a>
@@ -207,7 +279,14 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t pt-8 text-center text-sm animate-fade-in" style={{ borderColor: 'rgba(255, 255, 255, 0.1)', color: 'var(--text-inverse)', opacity: 0.7 }}>
+        <div 
+          className="border-t pt-8 text-center text-sm animate-fade-in" 
+          style={{ 
+            borderColor: 'rgba(255, 255, 255, 0.1)', 
+            color: theme === "dark" ? 'var(--text-tertiary)' : 'var(--text-inverse)',
+            opacity: theme === "dark" ? 1 : 0.7
+          }}
+        >
           <p>{t("footer.copyright")}</p>
         </div>
       </div>
