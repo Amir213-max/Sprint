@@ -146,15 +146,19 @@ export default function Hero() {
                       {/* Semi-transparent background for text area */}
                       <div className="absolute inset-0 bg-black/20 dark:bg-black/30 backdrop-blur-[2px] rounded-2xl -z-10"></div>
                       
-                      <div className="inline-block mb-4 px-4 py-2 rounded-full glass text-sm font-semibold text-white bg-[var(--accent)]/90 dark:bg-transparent dark:text-[var(--accent)] animate-fade-in shadow-lg backdrop-blur-sm">
-                        {t("hero.headline")}
-                      </div>
+                      {t("hero.subtitle") && (
+                        <div className="inline-block mb-4 px-4 py-2 rounded-full glass text-sm font-semibold text-white bg-[var(--accent)]/90 dark:bg-transparent dark:text-[var(--accent)] animate-fade-in shadow-lg backdrop-blur-sm">
+                          {t("hero.topline")}
+                        </div>
+                      )}
                       <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-3 sm:mb-4 leading-tight drop-shadow-2xl px-2 relative z-10">
                         {t("hero.headline")}
                       </h1>
-                      <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-4 sm:mb-6 leading-relaxed drop-shadow-xl px-2 font-medium relative z-10">
-                        {t("hero.subtitle")}
-                      </p>
+                      {t("hero.subtitle") && (
+                        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed px-2 drop-shadow-lg relative z-10 max-w-3xl mx-auto">
+                          {t("hero.subtitle")}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -220,9 +224,9 @@ export default function Hero() {
             <div className="animate-fade-in-up">
               <a
                 href="#contact"
-                className="group inline-block bg-[var(--primary)] text-[var(--text-inverse)] px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:bg-[var(--primary-dark)] transition-all shadow-3d hover:shadow-3d-lg transform hover:scale-105 hover:-translate-y-1 relative overflow-hidden"
+                className="group inline-block bg-[var(--primary)] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-base hover:bg-[var(--primary-dark)] transition-all shadow-3d hover:shadow-3d-lg transform hover:scale-105 hover:-translate-y-1 relative overflow-hidden"
               >
-                <span className="relative z-10">{t("hero.ctaText")}</span>
+                <span className="relative z-10 text-white">{t("hero.ctaText")}</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-[var(--accent)] to-[var(--accent-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               </a>
             </div>

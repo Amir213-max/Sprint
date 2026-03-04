@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WhyUsHero from "../components/WhyUsHero";
+import WhyUsSprint from "../components/WhyUsSprint";
 import CoreStrengths from "../components/CoreStrengths";
 import Differentiators from "../components/Differentiators";
 import WhyUsStats from "../components/WhyUsStats";
@@ -29,6 +30,7 @@ export default function WhyUsPage() {
       <main id="main-content" className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
         <Header companyName="Sprint Marketing & Software Solutions" />
         <WhyUsHero />
+        <WhyUsSprint />
         <CoreStrengths />
         <Differentiators />
         <WhyUsStats />

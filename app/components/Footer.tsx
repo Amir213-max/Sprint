@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useMemo } from "react";
 import { useTranslation } from "../hooks/useTranslation";
 import { useApp } from "../contexts/AppContext";
+import { FaSnapchatGhost } from "react-icons/fa";
 
 export default function Footer() {
   const { t, language } = useTranslation();
@@ -61,11 +62,7 @@ export default function Footer() {
       id: "4", 
       name: "Snapchat", 
       href: "https://www.snapchat.com/add/sprintmarketing?share_id=0y6bNJSvg7c&locale=ar-EG", 
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-13.04 1.406-13.04s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
-        </svg>
-      ),
+      icon: <FaSnapchatGhost className="w-5 h-5" />,
       color: "hover:bg-[#FFFC00] hover:text-black"
     },
   ];
@@ -130,9 +127,15 @@ export default function Footer() {
                   }}
                 >
                   <span 
-                    className="transition-all duration-300 group-hover:scale-110"
+                    className={`transition-all duration-300 group-hover:scale-110 ${social.name === 'Snapchat' ? 'group-hover:text-black' : ''}`}
                     style={{
-                      color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)'
+                      color: social.name === 'Snapchat' && theme === "dark" 
+                        ? 'var(--text-secondary)' 
+                        : social.name === 'Snapchat' 
+                        ? 'var(--text-inverse)' 
+                        : theme === "dark" 
+                        ? 'var(--text-secondary)' 
+                        : 'var(--text-inverse)'
                     }}
                   >
                     {social.icon}
@@ -205,16 +208,28 @@ export default function Footer() {
                 >
                   {t("footer.Email")}:
                 </span>
-                <a 
-                  href="mailto:sprintmarkting@gmail.com"
-                  className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)] break-all"
-                  style={{ 
-                    color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
-                    opacity: theme === "dark" ? 1 : 0.9
-                  }}
-                >
-                  sprintmarkting@gmail.com
-                </a>
+                <div className="flex flex-col gap-1.5">
+                  <a 
+                    href="mailto:info@sprint-sa.net"
+                    className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)] break-all"
+                    style={{ 
+                      color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+                      opacity: theme === "dark" ? 1 : 0.9
+                    }}
+                  >
+                    info@sprint-sa.net
+                  </a>
+                  <a 
+                    href="mailto:director-maeketing@sprint-sa.net"
+                    className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)] break-all"
+                    style={{ 
+                      color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+                      opacity: theme === "dark" ? 1 : 0.9
+                    }}
+                  >
+                    director-maeketing@sprint-sa.net
+                  </a>
+                </div>
               </li>
               
               <li className="flex items-start gap-2 rtl:gap-reverse">
@@ -229,24 +244,37 @@ export default function Footer() {
                 </span>
                 <div className="flex flex-col gap-1.5">
                   <a 
-                    href="tel:+966546348032"
-                    className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
-                    style={{ 
-                      color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
-                      opacity: theme === "dark" ? 1 : 0.9
-                    }}
-                  >
-                    +966 54 634 8032
-                  </a>
-                  <a 
                     href="tel:+966565227485"
                     className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
+                    dir="ltr"
                     style={{ 
                       color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
                       opacity: theme === "dark" ? 1 : 0.9
                     }}
                   >
-                    +966 56 522 7485
+                    +966 565 22 7485
+                  </a>
+                  <a 
+                    href="tel:+966546348032"
+                    className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
+                    dir="ltr"
+                    style={{ 
+                      color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+                      opacity: theme === "dark" ? 1 : 0.9
+                    }}
+                  >
+                    +966 546 34 8032
+                  </a>
+                  <a 
+                    href="tel:+966508940436"
+                    className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
+                    dir="ltr"
+                    style={{ 
+                      color: theme === "dark" ? 'var(--text-secondary)' : 'var(--text-inverse)',
+                      opacity: theme === "dark" ? 1 : 0.9
+                    }}
+                  >
+                    +966 508 94 0436
                   </a>
                 </div>
               </li>
@@ -262,7 +290,7 @@ export default function Footer() {
                   {t("footer.Address")}:
                 </span>
                 <a 
-                  href="https://www.google.com/maps/search/?api=1&query=Riyadh,+Saudi+Arabia+11461" 
+                  href="https://www.google.com/maps/search/?api=1&query=3951+Omar+Bin+Al-Khattab+Al-Far'i+Al-Malaz+District+Riyadh+Saudi+Arabia" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[var(--accent)] transition-colors duration-300 underline decoration-transparent hover:decoration-[var(--accent)]"
@@ -271,7 +299,10 @@ export default function Footer() {
                     opacity: theme === "dark" ? 1 : 0.9
                   }}
                 >
-                  Riyadh, Saudi Arabia 11461
+                  {language === 'ar' 
+                    ? '3951 طريق عمر بن الخطاب الفرعي، حي الملز، الرياض، المملكة العربية السعودية'
+                    : '3951, Omar Bin Al-Khattab Al-Far\'i, Al-Malaz District, Riyadh, Saudi Arabia'
+                  }
                 </a>
               </li>
             </ul>

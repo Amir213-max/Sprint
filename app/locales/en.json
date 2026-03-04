@@ -9,8 +9,9 @@
     "contact": "Contact"
   },
   "hero": {
-    "headline": "Empower Your Success with Premium Digital Solutions",
-    "subtitle": "Partner with us to unlock your business potential through strategic marketing excellence and innovative software development that delivers measurable results.",
+    "topline":"Empower Your Success with Premium Digital Solutions",
+    "headline": "Driving Growth Through Marketing and Technology",
+    "subtitle": "Our partnership with you opens horizons of your business potential through excellence in strategic marketing and innovative software development that delivers measurable results.",
     "belowSlider": {
       "headline": "Your Trusted Partner in Digital Excellence",
       "subtitle": "We combine creative marketing strategies with powerful software solutions to help your business thrive in the digital landscape. From concept to execution, we're with you every step of the way."
@@ -26,57 +27,39 @@
     "items": [
       {
         "id": "1",
-        "icon": "📊",
-        "title": "Digital Marketing",
-        "description": "Comprehensive digital marketing strategies including SEO, SEM, social media marketing, and content creation to boost your online presence."
+        "icon": "🎯",
+        "title": "Marketing Strategies",
+        "description": "We create smart marketing strategies based on precise analysis and a clear vision for growth. Integrated plans that enhance digital presence and turn ambition into tangible results."
       },
       {
         "id": "2",
-        "icon": "💻",
-        "title": "Software Development",
-        "description": "Custom software solutions, web applications, and mobile apps built with modern technologies to meet your specific business needs."
+        "icon": "🔍",
+        "title": "Search Engine Optimization - SEO",
+        "description": "We boost your brand's visibility in search engines through advanced SEO strategies, increasing qualified visits and enhancing digital presence with confidence and professionalism."
       },
       {
         "id": "3",
-        "icon": "🎨",
-        "title": "Brand Design",
-        "description": "Creative branding and design services that help establish a strong visual identity and memorable brand presence in the market."
+        "icon": "📢",
+        "title": "Paid Advertising Campaign Management",
+        "description": "We manage advertising campaigns with precise strategic approach, based on data analysis and audience behavior understanding, to achieve maximum return on investment and build a strong brand presence."
       },
       {
         "id": "4",
-        "icon": "📈",
-        "title": "Analytics & Insights",
-        "description": "Data-driven analytics and business intelligence solutions to track performance, identify opportunities, and make informed decisions."
+        "icon": "💻",
+        "title": "Website Design & Development",
+        "description": "We create elegant digital experiences that go beyond the traditional concept of websites, combining elegant design with advanced software engineering to deliver high-performance digital platforms."
       },
       {
         "id": "5",
-        "icon": "🔧",
-        "title": "Technical Consulting",
-        "description": "Expert technical consulting services to help you navigate complex technology decisions and optimize your digital infrastructure."
+        "icon": "📱",
+        "title": "Mobile App Design & Development",
+        "description": "We design and develop smart and highly reliable mobile applications that embody the brand vision and give users an elegant digital experience across iOS/Android systems."
       },
       {
         "id": "6",
-        "icon": "🚀",
-        "title": "Growth Strategy",
-        "description": "Strategic planning and execution services designed to accelerate business growth and expand your market reach effectively."
-      },
-      {
-        "id": "7",
-        "icon": "📱",
-        "title": "Mobile Applications",
-        "description": "Professional mobile app development for iOS and Android platforms with high performance and exceptional user experience to enhance your digital presence."
-      },
-      {
-        "id": "8",
-        "icon": "📲",
-        "title": "Social Media Management",
-        "description": "Strategic and professional management of your social media accounts to build a strong community and increase engagement with your target audience."
-      },
-      {
-        "id": "9",
-        "icon": "📢",
-        "title": "Advertising Campaigns",
-        "description": "Design and execution of effective advertising campaigns across various digital channels to increase brand awareness, attract new customers, and achieve excellent ROI."
+        "icon": "🎨",
+        "title": "Brand Identity Building - Branding",
+        "description": "We build a comprehensive brand identity that reflects the essence of your brand and distinguishes it in the market. We transform vision into a strong visual presence that builds trust and creates an unforgettable impression."
       }
     ]
   },
@@ -171,11 +154,42 @@
   "aboutPage": {
     "hero": {
       "title": "About Us",
-      "subtitle": "A Leading Digital Marketing and Software Solutions Company"
+      "subtitle": "Sprint for Marketing and Software Solutions is a leading provider of comprehensive digital marketing services and software development. With years of experience in the industry, we help companies of all sizes achieve their goals through innovative strategies, advanced technology, and data-driven solutions. Our team of experienced professionals is committed to delivering exceptional results that drive growth and maximize return on investment for our clients."
+    },
+    "whyUs": {
+      "title": "Why Us – Sprint",
+      "intro": "At Sprint, we combine digital marketing, creative production, programming, technical solutions, and accounting systems to deliver integrated solutions that support your business growth and enhance your presence in the digital market.",
+      "sections": [
+        {
+          "id": "1",
+          "title": "Digital Marketing & Creative Production",
+          "description": "We manage advertising campaigns across all advertising platforms, search engine optimization (SEO), and social media management, along with professional photography, video production, and creative content for brands, conferences, events, and products, giving your brand a distinctive character."
+        },
+        {
+          "id": "2",
+          "title": "Visual Identity & Branding",
+          "description": "We build a comprehensive visual Brand identity that reflects the strength of your brand, from logo design and identity guidelines to professional print materials and luxury packaging, ensuring a consistent and impactful image at every touchpoint."
+        },
+        {
+          "id": "3",
+          "title": "Technical Development & Digital Solutions",
+          "description": "We design and develop websites, e-commerce stores, mobile applications, integrate various electronic payment systems and installment systems, and build flexible internal operating systems that support work efficiency and scalability."
+        },
+        {
+          "id": "4",
+          "title": "Accounting & Management Systems",
+          "description": "We provide integrated and customized accounting, operations, and management systems, ERP, Odoo, tailored to the internal operating systems of various companies and institutions, and HR systems for managing human resources, employees, and financial operations with precision and transparency."
+        },
+        {
+          "id": "5",
+          "title": "Security & Infrastructure",
+          "description": "We ensure infrastructure stability and security through server management services, data protection, and encryption."
+        }
+      ]
     },
     "story": {
       "title": "Our Story",
-      "description": "Sprint Marketing & Software Solutions was founded with a mission to help businesses grow and thrive in the digital age. We believe in the power of technology and digital strategies to transform businesses and achieve sustainable success."
+      "description": "Sprint is a company specialized in digital marketing, programming, and technical solutions development. We help companies grow, increase sales, and build a strong and effective presence in the digital market through innovative solutions based on data and modern technology. We believe that real success begins with a smart plan and fast execution... and this is exactly what Sprint means."
     },
     "mission": {
       "title": "Our Mission",
@@ -240,6 +254,100 @@
     "hero": {
       "title": "Our Services",
       "subtitle": "Comprehensive Digital Marketing and Software Development Solutions to Drive Your Business Growth"
+    },
+    "marketingServices": {
+      "title": "Marketing Services",
+      "services": [
+        {
+          "id": "1",
+          "title": "Marketing Strategies",
+          "titleEn": "Marketing strategies",
+          "description": "We create smart marketing strategies based on precise analysis and a clear vision for growth. Integrated plans that enhance digital presence and turn ambition into tangible results."
+        },
+        {
+          "id": "2",
+          "title": "Search Engine Optimization - SEO",
+          "titleEn": "SEO",
+          "description": "We boost your brand's visibility in search engines through advanced SEO strategies, increasing qualified visits and enhancing digital presence with confidence and professionalism."
+        },
+        {
+          "id": "3",
+          "title": "Paid Advertising Campaign Management",
+          "titleEn": "Paid ADS Performance",
+          "description": "We manage advertising campaigns with precise strategic approach, based on data analysis and audience behavior understanding, to achieve maximum return on investment and build a strong brand presence across major digital platforms, managing advertising campaigns for hotels, direct booking, and global product sales websites."
+        },
+        {
+          "id": "4",
+          "title": "Social Media Account Management",
+          "titleEn": "Social Media Accounts",
+          "description": "We design and implement account management strategies to enhance engagement, build a loyal follower community, and effectively boost your digital brand presence."
+        },
+        {
+          "id": "5",
+          "title": "Creative Content Production",
+          "titleEn": "Media Production",
+          "description": "We produce visual and video content that expresses the essence of your brand: high-quality creative designs, professional videos that reflect value, content that enhances brand image and creates distinction."
+        },
+        {
+          "id": "6",
+          "title": "Printing & Packaging",
+          "titleEn": "Printing & packaging",
+          "description": "We transform printing and packaging into a luxurious experience that reflects your brand identity and leaves a distinctive visual impact."
+        },
+        {
+          "id": "7",
+          "title": "Brand Identity Building - Branding",
+          "titleEn": "Branding",
+          "description": "We build a comprehensive brand identity that reflects the essence of your brand and distinguishes it in the market. We transform vision into a strong visual presence that builds trust and creates an unforgettable impression."
+        },
+        {
+          "id": "8",
+          "title": "Conference & Event Organization",
+          "titleEn": "Events & Conferences",
+          "description": "We organize exceptional conferences and events with professional photography that documents every moment for an unforgettable integrated experience."
+        }
+      ]
+    },
+    "programmingServices": {
+      "title": "Programming & Technical Solutions Services",
+      "services": [
+        {
+          "id": "1",
+          "title": "Website Design & Development",
+          "titleEn": "Website - Online stores",
+          "description": "We create elegant digital experiences that go beyond the traditional concept of websites, combining elegant design with advanced software engineering to deliver high-performance digital platforms that reflect brand prestige and support strategic goals with stability and scalability."
+        },
+        {
+          "id": "2",
+          "title": "Accounting Systems",
+          "titleEn": "ERP Systems: NEXT/Odoo",
+          "description": "We develop integrated accounting solutions and ERP systems managed with high financial precision, providing comprehensive resource control, transparency in reports and invoices, and smooth financial operations management, supporting sustainable growth and institutional stability, compatible with Zakat and Income Authority in Saudi Arabia."
+        },
+        {
+          "id": "3",
+          "title": "Internal Company Operating Systems",
+          "titleEn": "Operation Management",
+          "description": "We design integrated digital operating systems that redefine business efficiency, by linking internal operations in one smart system that gives management complete control, smooth performance, and comprehensive accurate vision enabling confident strategic decision-making."
+        },
+        {
+          "id": "4",
+          "title": "Server Management",
+          "titleEn": "Server Management",
+          "description": "We provide highly professional server management services that ensure system stability, data security, and business continuity without interruption. We work on setting up, operating, and monitoring servers efficiently, applying the highest protection standards, backup, and performance optimization, to ensure a reliable technical environment that supports business growth with confidence."
+        },
+        {
+          "id": "5",
+          "title": "Human Resources Systems",
+          "titleEn": "HRM Systems",
+          "description": "We provide advanced human resources solutions managed with sophisticated institutional thinking, enabling companies to manage human capital with high efficiency, from administrative organization to job performance, within smart systems that reflect professionalism and corporate governance."
+        },
+        {
+          "id": "6",
+          "title": "Mobile App Design & Development",
+          "titleEn": "Mobile App",
+          "description": "We design and develop smart and highly reliable mobile applications that embody the brand vision and give users an elegant digital experience, from idea and design to development and launch. We focus on performance, security, and smooth usability across iOS/Android systems, to deliver scalable solutions that support growth and meet market aspirations."
+        }
+      ]
     },
     "overview": {
       "title": "We Provide Comprehensive Solutions for Your Digital Success",

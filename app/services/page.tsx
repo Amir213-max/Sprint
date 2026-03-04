@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ServicesHero from "../components/ServicesHero";
 import ServicesOverview from "../components/ServicesOverview";
-import ServicesGrid from "../components/ServicesGrid";
+import ServicesCategories from "../components/ServicesCategories";
 import ServiceDetails from "../components/ServiceDetails";
 import ServicesProcess from "../components/ServicesProcess";
 import ServicesCTA from "../components/ServicesCTA";
@@ -28,7 +28,7 @@ export default function ServicesPage() {
         <Header companyName="Sprint Marketing & Software Solutions" />
         <ServicesHero />
         <ServicesOverview />
-        <ServicesGrid />
+        <ServicesCategories />
         <ServiceDetails />
         <ServicesProcess />
         <ServicesCTA />
