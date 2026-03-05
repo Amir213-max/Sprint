@@ -2,28 +2,51 @@
 
 import Image from "next/image";
 import { useTranslation } from "../hooks/useTranslation";
+import { useApp } from "../contexts/AppContext";
 import { useState } from "react";
 
 export default function Clients() {
   const { t } = useTranslation();
+  const { theme } = useApp();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const clientImages = [
-    "/customers/1.png",
-    "/customers/2.png",
-    "/customers/3.png",
-    "/customers/5.png",
-    "/customers/6.png",
-    "/customers/7.png",
-    "/customers/8.png",
-    "/customers/9.png",
-    "/customers/11.png",
-    "/customers/12.png",
-    "/customers/13.png",
-    "/customers/14.png",
-    "/customers/348258049_257315513655218_2118163845715870427_n.png",
-    "/customers/588817523_1508528140842693_6503820176450315642_n.jpg.jpeg",
-    "/customers/Untitled-1.png",
+  
+  // خريطة الملفات: [اسم في black logos, اسم في white logos]
+  // الملفات المتطابقة بين المجلدين (26 ملف)
+  const logoMapping: Array<[string, string]> = [
+    ["logos_0001s_0000_PURE-WATER.png", "logos_0000_PURE-WATER.png"],
+    ["logos_0001s_0001_Group-3.png", "logos_0001_Group-3.png"],
+    ["logos_0001s_0002_WhatsApp-Image-2023-07-11-at-17.49.02.png", "logos_0002_WhatsApp-Image-2023-07-11-at-17.49.02.png"],
+    ["logos_0001s_0003_Layer-7.png", "logos_0003_Layer-7.png"],
+    ["logos_0001s_0004_2-مخلخ.png", "logos_0004_2-مخلخ.png"],
+    ["logos_0001s_0005_logo.png", "logos_0005_logo.png"],
+    ["logos_0001s_0006_Untitled-2.png", "logos_0006_Untitled-2.png"],
+    ["logos_0001s_0007_Vector-Smart-Object.png", "logos_0007_Vector-Smart-Object.png"],
+    ["logos_0001s_0008_Vector-Smart-Object.png", "logos_0008_Vector-Smart-Object.png"],
+    ["logos_0001s_0009_Vector-Smart-Object.png", "logos_0009_Vector-Smart-Object.png"],
+    ["logos_0001s_0010_Vector-Smart-Object.png", "logos_0010_Vector-Smart-Object.png"],
+    ["logos_0001s_0011_Vector-Smart-Object.png", "logos_0011_Vector-Smart-Object.png"],
+    ["logos_0001s_0012_4a6bccfc-fff1-4b0e-a68f-903d76028d63.png", "logos_0012_4a6bccfc-fff1-4b0e-a68f-903d76028d63.png"],
+    ["logos_0001s_0013_Vector-Smart-Object.png", "logos_0013_Vector-Smart-Object.png"],
+    ["logos_0001s_0014_Layer-6.png", "logos_0014_Layer-6.png"],
+    ["logos_0001s_0015_Vector-Smart-Object.png", "logos_0015_Vector-Smart-Object.png"],
+    ["logos_0001s_0016_New_Project-removebg-preview.png", "logos_0016_New_Project-removebg-preview.png"],
+    ["logos_0001s_0017_O0m99SfAGuM05OtViXcZdWYPe0piWyvxhlLWimdI.png", "logos_0017_O0m99SfAGuM05OtViXcZdWYPe0piWyvxhlLWimdI.png"],
+    ["logos_0001s_0018_LOGO.png", "logos_0018_LOGO.png"],
+    ["logos_0001s_0019_Group-2.png", "logos_0019_Group-2.png"],
+    ["logos_0001s_0021_120081003_1005930193211715_5608629871264922814_n.png", "logos_0021_120081003_1005930193211715_5608629871264922814_n.png"],
+    ["logos_0001s_0022_Vector-Smart-Object.png", "logos_0022_Vector-Smart-Object.png"],
+    ["logos_0001s_0023_Untitled-1.png", "logos_0023_Untitled-1.png"],
+    ["logos_0001s_0024_WhatsApp-Image-2023-04-15-at-00.21.24(1).png", "logos_0024_WhatsApp-Image-2023-04-15-at-00.21.24(1).png"],
+    ["logos_0001s_0025_فين-الاقي.png", "logos_0025_فين-الاقي.png"],
+    ["logos_0001s_0026_0x0.png", "logos_0026_0x0.png"],
   ];
+
+  // إنشاء مسارات الصور بناءً على الوضع الحالي
+  const clientImages = logoMapping.map(([blackLogo, whiteLogo]) => {
+    const folder = theme === "light" ? "black logos" : "white logos";
+    const filename = theme === "light" ? blackLogo : whiteLogo;
+    return `/logos/${folder}/${filename}`;
+  });
 
   return (
     <section
@@ -76,11 +99,12 @@ export default function Clients() {
                 {/* Image Container */}
                 <div className="relative z-10 transform transition-all duration-700 ease-out">
                   <Image
+                    key={`${theme}-${index}`}
                     src={imagePath}
                     alt={`Client ${index + 1}`}
-                    width={160}
-                    height={100}
-                    className="w-full h-auto object-contain transition-all duration-700 ease-out"
+                    width={120}
+                    height={75}
+                    className="w-full h-auto object-contain transition-all duration-700 ease-out max-w-[120px]"
                     style={{
                       filter: hoveredIndex === index 
                         ? 'brightness(1.1) contrast(1.05)' 
